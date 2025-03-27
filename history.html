@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История маслкаров</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', 'Times New Roman', sans-serif;
+            margin: 0;
+            padding-top: 80px;
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <nav class="fixed-menu">
+        <ul class="main-menu">
+            <!-- Центральные пункты -->
+            <div class="nav-center">
+                <li><a href="index.html" >Главная</a></li>
+                <li><a href="history.html" class="active">История</a></li>
+                <li class="menu-item">
+                    <a href="gallery.html">Галерея</a>
+                    <ul class="submenu">
+                        <li><a href="gallery.html?type=classic">Классика</a></li>
+                        <li><a href="gallery.html?type=modern">Современные</a></li>
+                    </ul>
+                </li>
+            </div>
+
+            <!-- Кнопка справа -->
+            <li class="auth-item">
+                <button class="auth-button highlight">Войти</button>
+            </li>
+            <li class="feedback-item">
+                <button class="auth-button highlight feedback-button">Обратная связь</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Модальное окно обратной связи -->
+    <div class="feedback-modal" id="feedbackModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>📩 Форма обратной связи</h2>
+            <form id="feedbackForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required placeholder="Ваше имя">
+                    <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="fbEmail" name="email" required placeholder="example@domain.com">
+                    <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение:</label>
+                    <textarea id="message" name="message" required placeholder="Ваше сообщение..."></textarea>
+                    <span class="error-message"></span>
+                </div>
+                <button type="submit" class="highlight">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="content">
+        <!-- Заголовок с акцентом -->
+        <h1 style="border-bottom: 2px solid #ff9900; padding-bottom: 10px; text-align: center;">
+            История американских маслкаров
+        </h1>
+
+        <div class="hero-block">
+            <img 
+                src="https://i.playground.ru/i/pix/1418036/image.jpg" 
+                alt="Классические маслкары" 
+                class="responsive-image"
+            >
+            <div class="hero-text">
+                <p><em>Золотая эра маслкаров</em> - период с 1964 по 1973 годы, когда американские автопроизводители соревновались в создании самых мощных и доступных автомобилей.</p>
+            </div>
+        </div>
+
+        <!-- Хронология -->
+        <div class="specs-box" style="margin-top: 2rem;">
+            <h2>Хронология развития</h2>
+            <ol class="history-timeline">
+                <li>
+                    <span class="year highlight">1964</span> 
+                    <p>Презентация первого <strong>Ford Mustang</strong> на Нью-Йоркской выставке. Стартовая цена: $2,368.</p>
+                </li>
+                <li>
+                    <span class="year highlight">1966</span>
+                    <p>Ответ Chevrolet - выпуск <strong>Camaro</strong> с двигателем до 375 л.с.</p>
+                </li>
+                <li>
+                    <span class="year highlight">1968</span>
+                    <p>Dodge представляет Charger с революционным дизайном «копчёного стекла» и скрытыми фарами.</p>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Галерея исторических фото -->
+        <div class="car-gallery">
+            <h2>Исторические фотографии</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img 
+                        src="https://i.pinimg.com/originals/85/90/a2/8590a29446bdd79640c17e6a9f0b2048.jpg" 
+                        alt="Классический Ford Mustang" 
+                        class="gallery-image"
+                    >
+                    <p class="image-caption">Классический Ford Mustang 60-х годов</p>
+                </div>
+                <div class="gallery-item">
+                    <img 
+                        src="https://i.pinimg.com/736x/14/88/aa/1488aa8080073ed80dcbddf1b6490dc7.jpg" 
+                        alt="Ретро автосалон" 
+                        class="gallery-image"
+                    >
+                    <p class="image-caption">Автосалон 1968 года</p>
+                </div>
+                <div class="gallery-item">
+                    <img 
+                        src="https://a.d-cd.net/d016702s-960.jpg" 
+                        alt="Реклама маслкаров" 
+                        class="gallery-image"
+                    >
+                    <p class="image-caption">Рекламные материалы 1970-х</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="specs-box">
+            <h3>Ключевые факты</h3>
+            <ul class="feature-list">
+                <li><span class="highlight">⛽ Пик популярности - 4.5 млн проданных маслкаров в 1965</span></li>
+                <li><span class="highlight">📉 Упадок в 1973 из-за топливного кризиса</span></li>
+                <li><span class="highlight">📈 Возрождение в 2000-х с новыми Mustang и Camaro</span></li>
+            </ul>
+        </div>
+    </main>
+
+    <a href="#top" class="scroll-top" id="scrollTopBtn" title="Наверх">
+        ▲
+    </a>
+
+    <!-- Модальное окно авторизации -->
+    <div class="auth-modal" id="authModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+
+            <div class="auth-tabs">
+                <button class="tab-link active" data-tab="login">Вход</button>
+                <button class="tab-link" data-tab="register">Регистрация</button>
+            </div>
+
+            <!-- Форма входа -->
+            <form id="loginForm" class="auth-form active" novalidate>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        required
+                        placeholder="mustang1967@example.com"
+                    >
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        required
+                        minlength="8"
+                        placeholder="Минимум 8 символов и 1 заглавная буква"
+                    >
+                    <span class="error-message"></span>
+                </div>
+
+                <button type="submit" class="highlight">Войти</button>
+            </form>
+
+            <!-- Форма регистрации -->
+            <form id="registerForm" class="auth-form" novalidate>
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input 
+                        type="email" 
+                        id="regEmail" 
+                        required
+                        placeholder="example@domain.com"
+                    >
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPassword">Пароль:</label>
+                    <input 
+                        type="password" 
+                        id="regPassword" 
+                        required 
+                        minlength="8"
+                        placeholder="Придумайте пароль. Минимум 8 символов и 1 заглавная буква"
+                    >
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Подтвердите пароль:</label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        required
+                        placeholder="Повторите пароль"
+                    >
+                    <span class="error-message"></span>
+                </div>
+
+                <button type="submit" class="highlight">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
