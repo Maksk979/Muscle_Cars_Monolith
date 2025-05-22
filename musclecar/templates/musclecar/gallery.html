@@ -127,7 +127,8 @@
 
     <script>
         // Подключение WebSocket
-        const ws = new WebSocket('ws://' + window.location.host + '/ws/like/');
+        const ws_scheme = window.location.protocol === "https:" ? "wss" : "ws";
+        const ws = new WebSocket(ws_scheme + '://' + window.location.host + '/ws/like/');
     
         ws.onmessage = function(e) {
             const data = JSON.parse(e.data);

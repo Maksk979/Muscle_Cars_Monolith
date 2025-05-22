@@ -8,7 +8,14 @@ SECRET_KEY = 'django-insecure-your-secret-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['musclecarsmonolith-production-c8d7.up.railway.app',
+    'localhost',
+    '127.0.0.1',
+    ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://musclecarsmonolith-production-c8d7.up.railway.app',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
