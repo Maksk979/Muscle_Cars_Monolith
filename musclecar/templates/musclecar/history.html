@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>История маслкаров</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -16,31 +17,8 @@
     </style>
 </head>
 <body>
-    <nav class="fixed-menu">
-        <ul class="main-menu">
-            <!-- Центральные пункты -->
-            <div class="nav-center">
-                <li><a href="index.html" >Главная</a></li>
-                <li><a href="history.html" class="active">История</a></li>
-                <li class="menu-item">
-                    <a href="gallery.html">Галерея</a>
-                    <ul class="submenu">
-                        <li><a href="gallery.html?type=classic">Классика</a></li>
-                        <li><a href="gallery.html?type=modern">Современные</a></li>
-                    </ul>
-                </li>
-            </div>
-
-            <!-- Кнопка справа -->
-            <li class="auth-item">
-                <button class="auth-button highlight">Войти</button>
-            </li>
-            <li class="feedback-item">
-                <button class="auth-button highlight feedback-button">Обратная связь</button>
-            </li>
-        </ul>
-    </nav>
-
+    {% include 'musclecar/navbar.html' %}
+    
     <!-- Модальное окно обратной связи -->
     <div class="feedback-modal" id="feedbackModal">
         <div class="modal-content">
@@ -148,86 +126,7 @@
     <a href="#top" class="scroll-top" id="scrollTopBtn" title="Наверх">
         ▲
     </a>
-
-    <!-- Модальное окно авторизации -->
-    <div class="auth-modal" id="authModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-
-            <div class="auth-tabs">
-                <button class="tab-link active" data-tab="login">Вход</button>
-                <button class="tab-link" data-tab="register">Регистрация</button>
-            </div>
-
-            <!-- Форма входа -->
-            <form id="loginForm" class="auth-form active" novalidate>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        required
-                        placeholder="mustang1967@example.com"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Пароль:</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        required
-                        minlength="8"
-                        placeholder="Минимум 8 символов и 1 заглавная буква"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <button type="submit" class="highlight">Войти</button>
-            </form>
-
-            <!-- Форма регистрации -->
-            <form id="registerForm" class="auth-form" novalidate>
-                <div class="form-group">
-                    <label for="regEmail">Email:</label>
-                    <input 
-                        type="email" 
-                        id="regEmail" 
-                        required
-                        placeholder="example@domain.com"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="regPassword">Пароль:</label>
-                    <input 
-                        type="password" 
-                        id="regPassword" 
-                        required 
-                        minlength="8"
-                        placeholder="Придумайте пароль. Минимум 8 символов и 1 заглавная буква"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmPassword">Подтвердите пароль:</label>
-                    <input 
-                        type="password" 
-                        id="confirmPassword" 
-                        required
-                        placeholder="Повторите пароль"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <button type="submit" class="highlight">Зарегистрироваться</button>
-            </form>
-        </div>
-    </div>
     
-    <script src="script.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

@@ -595,3 +595,39 @@ textarea {
     resize: vertical;
     min-height: 100px;
 }
+
+/* Задаем позиционирование для кнопки, чтобы псевдоэлемент располагался относительно нее */
+.feedback-button {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1em;
+    font-weight: normal !important;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative; /* добавить это свойство */
+}
+
+.feedback-button::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; /* расстояние от нижней границы кнопки */
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ff9900;
+    transition: all 0.3s ease;
+}
+
+.feedback-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;  /* эффект при наведении, как у остальных ссылок */
+    transform: translateY(-2px);
+    color: #ff9900 !important;
+}
+
+.feedback-button:hover::after {
+    width: 100%;
+    left: 0;
+}

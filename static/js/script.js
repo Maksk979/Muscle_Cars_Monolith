@@ -92,24 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const validateEmail = async (email) => {
-        const apiKey = '4d2a764b2efd7884557c16f45dd42964'; 
-        const url = `http://apilayer.net/api/check?access_key=${apiKey}&email=${email}`;
-    
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-    
-            console.log('Ответ от сервиса:', data);
-    
-            if (data.format_valid && data.smtp_check) {
-                return true; 
-            } else {
-                return false; 
-            }
-        } catch (error) {
-            console.error('Ошибка при проверке email:', error);
-            return false;
-        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     };
 
     const validateAuthForm = async (form) => {
@@ -257,5 +241,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-});
 
+    const form = document.getElementById('registration-form');
+    const password1 = document.getElementById('id_password1');
+    const password2 = document.getElementById('id_password2');
+    
+    form.addEventListener('submit', function(event) {
+        if (password1.value !== password2.value) {
+            event.preventDefault();
+            alert('Пароли не совпадают!');
+        }
+    });
+});

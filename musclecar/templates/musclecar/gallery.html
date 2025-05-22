@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Галерея маслкаров</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -13,33 +14,35 @@
             padding-top: 80px;
             background: #f5f5f5;
         }
+        .like-btn {
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 5px 0;
+            background: linear-gradient(45deg, #ff4757, #ff6b81);
+            color: white;
+        }
+        .like-btn.active {
+            box-shadow: 0 4px 15px rgba(255, 107, 129, 0.8);
+        }
+        .like-btn:hover {
+            transform: scale(1.05);
+        }
+        .count {
+            font-weight: bold;
+            min-width: 20px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
-    <nav class="fixed-menu">
-        <ul class="main-menu">
-            <!-- Центральные пункты -->
-            <div class="nav-center">
-                <li><a href="index.html" >Главная</a></li>
-                <li><a href="history.html">История</a></li>
-                <li class="menu-item">
-                    <a href="gallery.html" class="active">Галерея</a>
-                    <ul class="submenu">
-                        <li><a href="gallery.html?type=classic">Классика</a></li>
-                        <li><a href="gallery.html?type=modern">Современные</a></li>
-                    </ul>
-                </li>
-            </div>
-
-            <!-- Кнопка справа -->
-            <li class="auth-item">
-                <button class="auth-button highlight">Войти</button>
-            </li>
-            <li class="feedback-item">
-                <button class="auth-button highlight feedback-button">Обратная связь</button>
-            </li>
-        </ul>
-    </nav>
+    {% include 'musclecar/navbar.html' %}
 
     <!-- Модальное окно обратной связи -->
     <div class="feedback-modal" id="feedbackModal">
@@ -82,6 +85,12 @@
                         <li><span class="highlight">V8 4.7L</span></li>
                         <li><span class="highlight">271 л.с.</span></li>
                     </ul>
+                    <!-- Секция лайков -->
+                    <div class="like-section" data-post-id="1">
+                        <button class="like-btn">
+                            ❤️ <span class="count">0</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -93,6 +102,12 @@
                         <li><span class="highlight">V8 5.7L</span></li>
                         <li><span class="highlight">375 л.с.</span></li>
                     </ul>
+                    <!-- Секция лайков -->
+                    <div class="like-section" data-post-id="2">
+                        <button class="like-btn">
+                            ❤️ <span class="count">0</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -107,86 +122,35 @@
     </main>
 
     <a href="#top" class="scroll-top" id="scrollTopBtn">▲</a>
-
-    <!-- Модальное окно авторизации -->
-    <div class="auth-modal" id="authModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-
-            <div class="auth-tabs">
-                <button class="tab-link active" data-tab="login">Вход</button>
-                <button class="tab-link" data-tab="register">Регистрация</button>
-            </div>
-
-            <!-- Форма входа -->
-            <form id="loginForm" class="auth-form active" novalidate>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        required
-                        placeholder="mustang1967@example.com"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Пароль:</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        required
-                        minlength="8"
-                        placeholder="Минимум 8 символов и 1 заглавная буква"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <button type="submit" class="highlight">Войти</button>
-            </form>
-
-            <!-- Форма регистрации -->
-            <form id="registerForm" class="auth-form" novalidate>
-                <div class="form-group">
-                    <label for="regEmail">Email:</label>
-                    <input 
-                        type="email" 
-                        id="regEmail" 
-                        required
-                        placeholder="example@domain.com"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="regPassword">Пароль:</label>
-                    <input 
-                        type="password" 
-                        id="regPassword" 
-                        required 
-                        minlength="8"
-                        placeholder="Придумайте пароль. Минимум 8 символов и 1 заглавная буква"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmPassword">Подтвердите пароль:</label>
-                    <input 
-                        type="password" 
-                        id="confirmPassword" 
-                        required
-                        placeholder="Повторите пароль"
-                    >
-                    <span class="error-message"></span>
-                </div>
-
-                <button type="submit" class="highlight">Зарегистрироваться</button>
-            </form>
-        </div>
-    </div>
     
-    <script src="script.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <script>
+        // Подключение WebSocket
+        const ws = new WebSocket('ws://' + window.location.host + '/ws/like/');
+    
+        ws.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const likeSection = document.querySelector(`[data-post-id="${data.post_id}"]`);
+            if (likeSection) {
+                const btn = likeSection.querySelector('.like-btn');
+                const countElement = btn.querySelector('.count');
+                if (countElement) {
+                    countElement.textContent = data.like_count;
+                }
+            }
+        };
+        
+        // Обработчик кликов по кнопке лайка с передачей параметра toggle
+        document.querySelectorAll('.like-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const wasActive = this.classList.contains('active'); // состояние до переключения
+                this.classList.toggle('active');
+                const postId = this.closest('.like-section').dataset.postId;
+                ws.send(JSON.stringify({ action: 'like', post_id: postId, toggle: wasActive }));
+            });
+        });
+    </script>
+
 </body>
 </html>
